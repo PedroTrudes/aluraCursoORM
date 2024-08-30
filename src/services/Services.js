@@ -10,16 +10,27 @@ class Services {
         return dataSource[this.model].findAll();
     }
 
+    async pegarUmPorId(id) {
+        return dataSource[this.model].findByPk(id);
+    }
+
+    async registrarUser(dadosDoRegistro) {
+        return dataSource[this.model].create(dadosDoRegistro);
+    }
+
     async atualizaRegistro(dadosAtualizados, id) {
         const listaDeRegistrosAtualizado = dataSource[this.model].update(dadosAtualizados, {
-            where: {
-                id: id
-            }
+            where: {id: id}
         });
         if(listaDeRegistrosAtualizado[0] === 0) {
             return false;
+        }else{
+            return true;
         }
-        return true;
+    }
+
+    async excluirRegistro(id){
+        return dataSource[this.model].destroy({where : {id : id}});
     }
 }
 
