@@ -1,3 +1,4 @@
+//Controller generico que serve para todas os outros controllers
 class Controller {
     constructor(entidadeService) {
         this.entidadeService = entidadeService;
@@ -22,10 +23,10 @@ class Controller {
         }
     }
 
-    async criarUsuario(req, res) {
+    async criar(req, res) {
         const userDados = req.body;
         try {
-            const userCriado = await this.entidadeService.registrarUser(userDados);
+            const userCriado = await this.entidadeService.registrar(userDados);
             return res.status(200).json({message: "usuario registrado", dados: userCriado})
         } catch (error) {
             return res.status(500).json(error.message);

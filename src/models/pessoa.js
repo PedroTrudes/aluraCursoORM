@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'docente_id'
       });
       Pessoa.hasMany(models.Matricula, {//pegando onde esta a model que tem conexao com Pessoas
-        foreignKey: 'estudante_id'//passando a chave estrangeiras 
+        foreignKey: 'estudante_id',//passando a chave estrangeiras 
+        //scope: {status: 'matriculado'}, scope funciona como um WHERE no banco de dados
+        as: 'aulasMatriculadas'
       });
     }
   }
