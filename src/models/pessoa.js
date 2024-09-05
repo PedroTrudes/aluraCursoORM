@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
   class Pessoa extends Model {
     static associate(models) {
       //precisa sempre ser feito nas duas estancias Migration e Models
-      Pessoa.hasMany(models.Curso, {
+      Pessoa.hasMany(models.Curso, {//pegando onde esta a model que tem conexao com Pessoas
         foreignKey: 'docente_id'
       });
-      Pessoa.hasMany(models.Matricula, {
-        foreignKey: 'estudante_id'
+      Pessoa.hasMany(models.Matricula, {//pegando onde esta a model que tem conexao com Pessoas
+        foreignKey: 'estudante_id'//passando a chave estrangeiras 
       });
     }
   }
